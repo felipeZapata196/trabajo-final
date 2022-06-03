@@ -1,0 +1,147 @@
+hacer un formulario de registro simple.  hecho
+guardar dicha información en una base de datos  hecho
+
+listar esa información.
+
+
+
+
+recordar que en el registro añades varios campos pero el de posición en el comedor y si asiste o no lo vas a tener en cuenta en otro 
+apartado.
+
+
+
+
+CREATE TABLE asistencia_comedor(
+    alumnoId BIGINT UNSIGNED NOT NULL,
+    date VARCHAR(10) NOT NULL,
+    status ENUM('asiste', 'falta'),
+    FOREIGN KEY (alumnoId) REFERENCES alumnos(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+
+ <form method="post">
+		<h1>curso</h1>
+		
+		<input type="text" name="curso" placeholder="curso">
+		
+		<input type="submit" name="register">
+	</form>
+
+
+     <td>
+
+                                <form action="save_attendance.php">
+
+                                    <select name="opcion" class="form-control">
+                                        <option disabled value="unset">--Select--</option>
+                                        <option value="asiste">asiste</option>
+                                        <option value="falta">no asiste</option>
+                                    </select>
+
+                                </form>
+                            </td>
+
+
+
+
+                            select alumnos.curso, 
+sum(case when status = 'asiste' then 1 else 0 end) as cuenta_asistencia,
+sum(case when status = 'falta' then 1 else 0 end) as cuenta_faltas 
+ from asistencia_comedor
+ inner join alumnos on alumnos.id = asistencia_comedor.alumnoId
+ where date ='2022-02-13'
+ group by alumnoId
+
+
+
+
+ form method="post" class="signUp">
+
+	<h1 class="h3 mb-3 fw-normal">Por favor registre sus datos</h1>
+
+	<div class="form-floating">
+		<input type="text" name="nombre" class="form-control" id="name">
+		<label for="floatingInput">Nombre Alumno</label>
+	</div>
+
+
+	<div class="form-floating">
+		<input type="password" name="contraseña" class="form-control">
+		<label for="floatingInput">contraseña</label>
+	</div>
+	<div class="form-floating">
+		<input type="text" name="dni" class="form-control" placeholder="Dni">
+		<label for="floatingPassword">DNI</label>
+	</div>
+	<select class="form-select" name="curso">
+		<option disabled value="unset">--Select--</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select>
+
+	<div class="form-floating">
+		<input type="text" name="cuenta_bancaria" class="form-control" placeholder="Cuenta bancaria">
+		<label for="floatingPassword">cuenta bancaria</label>
+	</div>
+
+
+
+
+
+	<div class="checkbox mb-3">
+		<label>
+			<input type="checkbox" value="remember-me"> Remember me
+		</label>
+	</div>
+	<input type="submit" name="register">
+	<p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+</form>
+</body>
+
+
+
+<nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" id="botonMenu" aria-label="Mostrar u ocultar menú">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mr-auto">
+
+
+        </ul>
+    </div>
+</nav>
+
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+
+    <a class="navbar-brand" href="#">Top navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="employees.php">Alumnos <i class="fa fa-users"></i></a>
+            </li>
+
+            <a class="nav-link" href="formularioRegistro.php">Registro <i class="fa fa-file-alt"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="estadisticas_comedor.php">estadísticas comedor <i class="fa fa-file-alt"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="lista.php">Lista <i class="fa fa-file-alt"></i></a>
+            </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
