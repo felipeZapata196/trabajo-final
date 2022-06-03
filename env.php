@@ -1,4 +1,4 @@
 ; <?php exit; ?>
-MYSQL_DATABASE_NAME = "lista_asistencia"
-MYSQL_USER = "root"
-MYSQL_PASSWORD = ""
+MYSQL_DATABASE_NAME = "heroku_f22e23b5600c9c2"
+MYSQL_USER = "be686c02860c66"
+MYSQL_PASSWORD = "643cc843"
